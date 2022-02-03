@@ -14,11 +14,13 @@ export const List = styled.li`
 	display: flex;
 	align-items: center;
 	position: relative;
-	font: lighter 20px/1 'arial';
+	font: 20px/1 'arial';
 `
 
 export const CheckBox = styled.span`
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
