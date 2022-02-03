@@ -3,7 +3,6 @@ import { FaTrash } from 'react-icons/fa';
 import { FcCheckmark } from 'react-icons/fc';
 
 export default function ListBox({ list, onClick, onRemove, checkActivation }) {
-  console.log(list);
   return (
     <S.ListBox>
       {list.map((li) => (

@@ -13,8 +13,5 @@ export const Button = styled.button`
 	bottom: 0;
 	margin-bottom: -40px;
 	margin-left: -40px;
-`
-export const ActiveBtn = styled(Button)`
-	background: tomato;
-	transform: rotate(45deg)
+	transition: .5s;
 `

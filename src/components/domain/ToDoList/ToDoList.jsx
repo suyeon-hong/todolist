@@ -1,8 +1,15 @@
 import { Header, ListBox, Button, UserInput } from '../../base';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import * as S from './Style';
 
 export default function ToDoList() {
+  const nextId = useRef(3);
+  const [buttonOn, setButtonOn] = useState(false);
+  const [userInput, setUserInput] = useState({
+    contents: '',
+    completed: false,
+    isActive: false,
+  });
   const [list, setList] = useState([
     {
       id: 1,
@@ -28,13 +35,40 @@ export default function ToDoList() {
 
   const onRemove = (id) => {
     setList((list) => list.filter((li) => li.id !== id));
-    console.log(list);
   };
 
   const checkActivation = (id) => {
     setList((list) =>
       list.map((li) => (li.id === id ? { ...li, isActive: !li.isActive } : li)),
     );
+  };
+
+  const activeBtn = () => {
+    setButtonOn((button) => !button);
+  };
+
+  const getUserInput = (e) => {
+    setUserInput((input) => ({ ...input, contents: e.target.value }));
+  };
+
+  const onUpdate = (e) => {
+    e.preventDefault();
+    if (userInput.contents === '') {
+      alert('할 일을 입력해 주세요.');
+      return;
+    }
+    setList((list) =>
+      list.concat({
+        id: nextId.current,
+        ...userInput,
+      }),
+    );
+    setUserInput({
+      contents: '',
+      completed: false,
+      isActive: false,
+    });
+    nextId.current += 1;
   };
 
   return (
@@ -46,8 +80,14 @@ export default function ToDoList() {
         onRemove={onRemove}
         checkActivation={checkActivation}
       />
-      <UserInput />
-      <Button />
+      {buttonOn && (
+        <UserInput
+          userInput={userInput}
+          onChange={getUserInput}
+          onUpdate={onUpdate}
+        />
+      )}
+      <Button buttonOn={buttonOn} onClick={activeBtn} />
     </S.Wrapper>
   );
 }

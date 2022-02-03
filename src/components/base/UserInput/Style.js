@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const UserInputWrapper = styled.div`
+export const UserInputForm = styled.form`
 	width: 100%;
 	padding: 30px 30px 70px;
 	background: #F8F9FA;
