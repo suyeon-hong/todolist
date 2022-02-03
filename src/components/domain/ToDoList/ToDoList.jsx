@@ -1,10 +1,9 @@
-import { Header, ListBox, Button, UserInput } from '../../base';
+import { Header, ListBox, Button } from '../../base';
 import { useState, useRef } from 'react';
 import * as S from './Style';
 
 export default function ToDoList() {
   const nextId = useRef(3);
-  const [buttonOn, setButtonOn] = useState(false);
   const [userInput, setUserInput] = useState({
     contents: '',
     completed: false,
@@ -43,10 +42,6 @@ export default function ToDoList() {
     );
   };
 
-  const activeBtn = () => {
-    setButtonOn((button) => !button);
-  };
-
   const getUserInput = (e) => {
     setUserInput((input) => ({ ...input, contents: e.target.value }));
   };
@@ -80,14 +75,12 @@ export default function ToDoList() {
         onRemove={onRemove}
         checkActivation={checkActivation}
       />
-      {buttonOn && (
-        <UserInput
-          userInput={userInput}
-          onChange={getUserInput}
-          onUpdate={onUpdate}
-        />
-      )}
-      <Button buttonOn={buttonOn} onClick={activeBtn} />
+
+      <Button
+        userInput={userInput}
+        getUserInput={getUserInput}
+        onUpdate={onUpdate}
+      />
     </S.Wrapper>
   );
 }
