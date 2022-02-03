@@ -1,6 +1,6 @@
 import * as S from './Style';
 
-export default function Header() {
+export default function Header({ list }) {
   const MONTH = [
     '일요일',
     '월요일',
@@ -12,13 +12,15 @@ export default function Header() {
   ];
   const date = new Date();
 
+  const uncompletedNums = list.filter((li) => li.completed === false).length;
+
   return (
     <>
       <S.TitleDate>
         {date.getFullYear()}년 {date.getMonth() + 1}월 {date.getDate()}일
       </S.TitleDate>
       <S.Today>{MONTH[date.getDay()]}</S.Today>
-      <S.ToDoNums>남은 할 일 0개</S.ToDoNums>
+      <S.ToDoNums>남은 할 일 {uncompletedNums}개</S.ToDoNums>
     </>
   );
 }
