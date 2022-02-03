@@ -5,13 +5,11 @@ const initialTodos = [
     id: 1,
     contents: '산책 하기',
     completed: false,
-    isActive: false,
   },
   {
     id: 2,
     contents: '공부 하기',
     completed: true,
-    isActive: false,
   },
 ];
 

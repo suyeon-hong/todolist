@@ -1,41 +1,23 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import * as S from './Style';
-import {
-  TodoDispatchContext,
-  TodoNextIdContext,
-} from '../../utils/TodoProvider/TodoProvider';
 
-export default function UserInput() {
-  const dispatch = useContext(TodoDispatchContext);
-  const nextId = useContext(TodoNextIdContext);
-  const [input, setInput] = useState({
-    contents: '',
-  });
+export default function UserInput({ onUpdate }) {
+  const [input, setInput] = useState('');
   const onChange = (e) => {
-    setInput({
-      id: nextId.current,
-      contents: e.target.value,
-      completed: false,
-      isActive: false,
-    });
+    setInput(e.target.value);
   };
-  const onUpdate = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: 'UPDATE',
-      todo: { ...input },
-    });
-    setInput({
-      contents: ' ',
-    });
-    nextId.current += 1;
+    if (input === '') return;
+    setInput('');
+    onUpdate(input);
   };
 
   return (
-    <S.UserInputForm onSubmit={onUpdate}>
+    <S.UserInputForm onSubmit={onSubmit}>
       <S.UserInput
         onChange={onChange}
-        value={input.contents}
+        value={input}
         placeholder="할 일을 입력 후, Enter를 누르세요"
       />
     </S.UserInputForm>

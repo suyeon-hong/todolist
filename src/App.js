@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     background: transparent;
     cursor: pointer;
+
+    &:focus{
+      outline: none;
+    }
   }
   body{
     width: 100%;
