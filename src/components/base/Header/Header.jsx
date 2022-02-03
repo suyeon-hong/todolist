@@ -1,6 +1,8 @@
+import { TodoStateContext } from '../../utils/TodoProvider/TodoProvider';
+import { useContext } from 'react';
 import * as S from './Style';
 
-export default function Header({ list }) {
+export default function Header() {
   const MONTH = [
     '일요일',
     '월요일',
@@ -12,6 +14,7 @@ export default function Header({ list }) {
   ];
   const date = new Date();
 
+  const list = useContext(TodoStateContext);
   const uncompletedNums = list.filter((li) => li.completed === false).length;
 
   return (

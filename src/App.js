@@ -1,11 +1,14 @@
 import { ToDoList } from './components/domain'
 import { createGlobalStyle } from 'styled-components';
+import { TodoProvider } from './components/utils';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <ToDoList />
+      <TodoProvider>
+        <GlobalStyle />
+        <ToDoList />
+      </TodoProvider>
     </>
   );
 }

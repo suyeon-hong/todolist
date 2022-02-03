@@ -4,7 +4,7 @@ import { UserInput } from '../../base';
 import { useState } from 'react';
 import * as S from './Style';
 
-export default function Button({ userInput, getUserInput, onUpdate }) {
+export default function Button() {
   const [buttonOn, setButtonOn] = useState(false);
   const activeBtn = () => {
     setButtonOn((button) => !button);
@@ -12,13 +12,7 @@ export default function Button({ userInput, getUserInput, onUpdate }) {
 
   return (
     <IconContext.Provider value={{ color: '#fff', size: '50px' }}>
-      {buttonOn && (
-        <UserInput
-          userInput={userInput}
-          onChange={getUserInput}
-          onUpdate={onUpdate}
-        />
-      )}
+      {buttonOn && <UserInput />}
       <S.Button buttonOn={buttonOn} onClick={activeBtn}>
         <AiOutlinePlus />
       </S.Button>
