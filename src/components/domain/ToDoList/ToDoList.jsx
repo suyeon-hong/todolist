@@ -36,12 +36,6 @@ export default function ToDoList() {
     setList((list) => list.filter((li) => li.id !== id));
   };
 
-  const checkActivation = (id) => {
-    setList((list) =>
-      list.map((li) => (li.id === id ? { ...li, isActive: !li.isActive } : li)),
-    );
-  };
-
   const getUserInput = (e) => {
     setUserInput((input) => ({ ...input, contents: e.target.value }));
   };
@@ -69,12 +63,7 @@ export default function ToDoList() {
   return (
     <S.Wrapper>
       <Header list={list} />
-      <ListBox
-        list={list}
-        onClick={clickHandler}
-        onRemove={onRemove}
-        checkActivation={checkActivation}
-      />
+      <ListBox list={list} onClick={clickHandler} onRemove={onRemove} />
 
       <Button
         userInput={userInput}

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Button = styled.button`
 	width: 80px;
@@ -14,4 +14,9 @@ export const Button = styled.button`
 	margin-bottom: -40px;
 	margin-left: -40px;
 	transition: .5s;
+
+	${props => props.buttonOn && css`
+		background: tomato;
+		transform: rotate(45deg);
+	`}
 `

@@ -15,12 +15,12 @@ export default function Header({ list }) {
   const uncompletedNums = list.filter((li) => li.completed === false).length;
 
   return (
-    <>
-      <S.TitleDate>
+    <S.HeaderBlock>
+      <h1>
         {date.getFullYear()}년 {date.getMonth() + 1}월 {date.getDate()}일
-      </S.TitleDate>
-      <S.Today>{MONTH[date.getDay()]}</S.Today>
-      <S.ToDoNums>남은 할 일 {uncompletedNums}개</S.ToDoNums>
-    </>
+      </h1>
+      <h2>{MONTH[date.getDay()]}</h2>
+      <p>남은 할 일 {uncompletedNums}개</p>
+    </S.HeaderBlock>
   );
 }

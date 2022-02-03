@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const ListBox = styled.ul`
 	width: 100%;
@@ -8,6 +8,20 @@ export const ListBox = styled.ul`
 	overflow-y: auto;
 `
 
+export const Icon = styled.span`
+	display: none;
+	color: #ddd;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 0px;
+	transform: translateY(-50%);
+
+	&:hover{
+		color: tomato;
+	}
+`
+
 export const List = styled.li`
 	width: 100%;
 	padding: 10px 0;
@@ -15,6 +29,12 @@ export const List = styled.li`
 	align-items: center;
 	position: relative;
 	font: 20px/1 'arial';
+
+	&:hover{
+		${Icon}{
+			display: initial;
+		}
+	}
 `
 
 export const CheckBox = styled.span`
@@ -27,16 +47,16 @@ export const CheckBox = styled.span`
 	border: 1px solid #ddd;
 	margin-right: 20px;
 	cursor: pointer;
-`
-export const Icon = styled.span`
-	color: #ddd;
-	cursor: pointer;
-	position: absolute;
-	top: 50%;
-	right: 0px;
-	transform: translateY(-50%);
 
-	&:hover{
-		color: tomato;
-	}
+	${props => {
+		props.completed && css`
+		border-color: #87C289;
+	`
+	}}
+`
+
+export const Contents = styled.span`
+	${props => props.completed && css`
+		color: #bbb
+	`}
 `

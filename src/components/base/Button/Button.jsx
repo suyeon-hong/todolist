@@ -19,13 +19,7 @@ export default function Button({ userInput, getUserInput, onUpdate }) {
           onUpdate={onUpdate}
         />
       )}
-      <S.Button
-        style={{
-          background: buttonOn && 'tomato',
-          transform: buttonOn && 'rotate(45deg)',
-        }}
-        onClick={activeBtn}
-      >
+      <S.Button buttonOn={buttonOn} onClick={activeBtn}>
         <AiOutlinePlus />
       </S.Button>
     </IconContext.Provider>
